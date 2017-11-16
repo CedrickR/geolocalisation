@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Fiche de la société</h1>
+
+ <div class="row">
+     <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{ societe.nom }}</h3>
+            </div>
+            <div class="panel-body">
+                    <table>
+                    <tbody>
+                        <tr>
+                            <th>Adresse</th>
+                            <td>&nbsp;</td>
+                            <td>{{ societe.adresse }}</td>
+                        </tr>
+                        <tr>
+                            <th>Code postal</th>
+                            <td>&nbsp;</td>
+                            <td>{{ societe.cp }}</td>
+                        </tr>
+                        <tr>
+                            <th>Ville</th>
+                            <td>&nbsp;</td>
+                            <td>{{ societe.ville }}</td>
+                        </tr>
+                        <tr>
+                            <th>Longitude</th>
+                            <td>&nbsp;</td>
+                            <td>{{ societe.longitude }}</td>
+                        </tr>
+                        <tr>
+                            <th>Latitude</th>
+                            <td>&nbsp;</td>
+                            <td>{{ societe.latitude }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Plan</h3>
+            </div>
+            <div class="panel-body">
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="col-md-5">
+    </div>
+    <div class="col-md-2">
+    <div class="list-group">
+    <a href="{{ path('societe_index') }}" class="list-group-item active">Retour à la liste</a>
+    <a href="{{ path('societe_edit', { 'id': societe.id }) }}" class="list-group-item">Editer</a>
+                {{ form_start(delete_form) }}
+                    <input type="submit" value="Delete">
+                {{ form_end(delete_form) }}
+    </div>
+    </div>
+    <div class="col-md-5">
+    </div>
+    
+
+</div>
+{% endblock %}
