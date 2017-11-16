@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
-
+{% block apikey %}
+<script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMILvKHwLBWpBJYFQaGNAUEZaW0CX164k">
+    </script>
+{% endblock %}
 {% block body %}
     <h1>Fiche de la société</h1>
 
@@ -48,6 +52,8 @@
                 <h3 class="panel-title">Plan</h3>
             </div>
             <div class="panel-body">
+            {{ google_map_container(map) }}
+            {{ google_map_js(map) }}
             </div>
         </div>
     </div>

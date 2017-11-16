@@ -7,7 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
 
-
+use Ivory\GoogleMap\Base\Coordinate;
+use Ivory\GoogleMap\Map;
 
 
 /**
@@ -69,13 +70,26 @@ class SocieteController extends Controller
     public function showAction(Societe $societe)
     {
         $deleteForm = $this->createDeleteForm($societe);
+        
+
+        $map = new Map();
+        
+        // Disable the auto zoom flag (disabled by default)
+        $map->setAutoZoom(false);
+        
+        // Sets the center
+        $map->setCenter(new Coordinate(0, 0));
+        
+        // Sets the zoom
+        $map->setMapOption('zoom', 3);
 
          
 
 
         return $this->render('societe/show.html.twig', array(
             'societe' => $societe,
-            'delete_form' => $deleteForm->createView()
+            'delete_form' => $deleteForm->createView(),
+            'map' => $map
         ));
     }
 
